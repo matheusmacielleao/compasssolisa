@@ -4,7 +4,7 @@ class CarroRepository {
     async create(payload) {
         return CarroSchema.create(payload);
     }
-    async list() {
+    async find() {
         return CarroSchema.find();
     }
 }

@@ -17,6 +17,14 @@ class CarroService {
             return error;
         }
     }
+    async delete(payload) {
+        try {
+            const result = await CarroRepository.delete(payload);
+            return result;
+        } catch (error) {
+            return error;
+        }
+    }
 }
 
 module.exports = new CarroService();
