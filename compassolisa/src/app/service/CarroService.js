@@ -9,6 +9,14 @@ class CarroService {
             return error;
         }
     }
+    async find() {
+        try {
+            const result = await CarroRepository.find();
+            return result;
+        } catch (error) {
+            return error;
+        }
+    }
 }
 
 module.exports = new CarroService();

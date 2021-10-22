@@ -5,6 +5,11 @@ class CarroController {
         const result = await CarroService.create(req.body);
         return res.status(201).json(result)
     }
+    async find(req, res) {
+        const result = await CarroService.find();
+        return res.status(201).json(result)
+    }
+    
 }
 
-module.exports = new UserController();
+module.exports = new CarroController();

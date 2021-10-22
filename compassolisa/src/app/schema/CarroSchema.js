@@ -5,10 +5,10 @@ const CarroSchema = mongoose.Schema({
     cor: String,
     ano: Number,
     quantidadePassageiros: Number,
-    acessorios : {descricao : String}
+    acessorios : [{descricao : String}]
 
 })
 
-const Carro = mongoose.model('Carro', CarroSchema);
+const Carro = mongoose.model('Carro', CarroSchema,"Carro");
 
 module.exports = Carro;

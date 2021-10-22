@@ -4,6 +4,9 @@ class CarroRepository {
     async create(payload) {
         return CarroSchema.create(payload);
     }
+    async list() {
+        return CarroSchema.find();
+    }
 }
 
-module.exports = new UserRepository();
+module.exports = new CarroRepository();
