@@ -13,6 +13,9 @@ class CarroRepository {
     async findById(payload) {
         return CarroSchema.findById(payload);
     }
+    async update(_id,payload) {
+        return CarroSchema.findOneAndUpdate({_id},payload);
+    }
 
 }
 

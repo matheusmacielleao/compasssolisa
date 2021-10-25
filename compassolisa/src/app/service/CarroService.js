@@ -33,6 +33,14 @@ class CarroService {
             return error;
         }
     }
+    async update(id,payload) {
+        try {
+            const result = await CarroRepository.update(id,payload);
+            return result;
+        } catch (error) {
+            return error;
+        }
+    }
     
 }
 

@@ -17,6 +17,10 @@ class CarroController {
         const result = await CarroService.findById(req.params.id);
         return res.status(201).json(result)
     }
+    async update(req, res) {
+        const result = await CarroService.update(req.params.id,req.body);
+        return res.status(200).json(result)
+    }
     
     
 }
