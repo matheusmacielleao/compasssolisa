@@ -6,10 +6,10 @@ const PessoaSchema = mongoose.Schema({
     data_nascimento :Date,
     email : String,
     senha : String,
-    habilitado : Boolean
+    habilitado : String
 
 })
 
-const Pessoa = mongoose.model('Pessoa', PessoaSchema);
+const Pessoa = mongoose.model('Pessoa', PessoaSchema,"Pessoa");
 
 module.exports = Pessoa;
