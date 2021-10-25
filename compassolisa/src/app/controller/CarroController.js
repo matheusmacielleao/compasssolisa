@@ -9,6 +9,15 @@ class CarroController {
         const result = await CarroService.find();
         return res.status(201).json(result)
     }
+    async delete(req, res) {
+        const result = await CarroService.delete(req.params.id);
+        return res.status(204).json(result)
+    }
+    async findById(req, res) {
+        const result = await CarroService.findById(req.params.id);
+        return res.status(201).json(result)
+    }
+    
     
 }
 

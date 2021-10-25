@@ -25,6 +25,15 @@ class CarroService {
             return error;
         }
     }
+    async findById(payload) {
+        try {
+            const result = await CarroRepository.findById(payload);
+            return result;
+        } catch (error) {
+            return error;
+        }
+    }
+    
 }
 
 module.exports = new CarroService();

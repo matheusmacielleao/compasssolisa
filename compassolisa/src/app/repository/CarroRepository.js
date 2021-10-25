@@ -7,6 +7,13 @@ class CarroRepository {
     async find() {
         return CarroSchema.find();
     }
+    async delete(payload) {
+        return CarroSchema.deleteOne({"_id":payload});
+    }
+    async findById(payload) {
+        return CarroSchema.findById(payload);
+    }
+
 }
 
 module.exports = new CarroRepository();
