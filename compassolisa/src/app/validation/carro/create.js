@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
             quantidadePassageiros: Joi.number().required()
         });
 
-        schema.acessorios
+        
         const { error } = await schema.validate(req.body, { abortEarl: true });
         if (error) throw error
         return next();

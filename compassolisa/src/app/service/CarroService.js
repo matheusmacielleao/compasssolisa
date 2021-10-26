@@ -1,4 +1,5 @@
 const CarroRepository = require('../repository/CarroRepository');
+const mongoose = require('mongoose');
 
 class CarroService {
     async create(payload) {
@@ -9,9 +10,9 @@ class CarroService {
             return error;
         }
     }
-    async find() {
+    async find(payload) {
         try {
-            const result = await CarroRepository.find();
+            const result = await CarroRepository.find(payload);
             return result;
         } catch (error) {
             return error;

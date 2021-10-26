@@ -9,9 +9,9 @@ class PessoaService {
             return error;
         }
     }
-    async find() {
+    async find(payload) {
         try {
-            const result = await PessoaRepository.find();
+            const result = await PessoaRepository.find(payload);
             return result;
         } catch (error) {
             return error;

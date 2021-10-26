@@ -8,7 +8,7 @@ module.exports = (server, routes, prefix = '/pessoa') => {
     routes.get('/', PessoaController.find);
     routes.get('/:id', PessoaController.findById);
     routes.delete('/:id', PessoaController.delete);
-    routes.put('/:id', PessoaController.update);
+    routes.put('/:id',createValidation ,PessoaController.update);
     server.use(prefix, routes);
 }
 

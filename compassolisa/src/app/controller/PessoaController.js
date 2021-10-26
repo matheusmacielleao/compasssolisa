@@ -6,7 +6,7 @@ class PessoaController {
         return res.status(201).json(result)
     }
     async find(req, res) {
-        const result = await PessoaService.find();
+        const result = await PessoaService.find(req.query);
         return res.status(201).json(result)
     }
     async delete(req, res) {

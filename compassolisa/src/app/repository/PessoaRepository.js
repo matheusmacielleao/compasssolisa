@@ -4,8 +4,8 @@ class PessoaRepository {
     async create(payload) {
         return PessoaSchema.create(payload);
     }
-    async find() {
-        return PessoaSchema.find();
+    async find($payload) {
+        return PessoaSchema.find($payload);
     }
     async delete(payload) {
         return PessoaSchema.deleteOne({ "_id": payload });

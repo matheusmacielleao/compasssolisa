@@ -6,7 +6,8 @@ class CarroController {
         return res.status(201).json(result)
     }
     async find(req, res) {
-        const result = await CarroService.find();
+        console.log(req.query);
+        const result = await CarroService.find(req.query);
         return res.status(201).json(result)
     }
     async delete(req, res) {

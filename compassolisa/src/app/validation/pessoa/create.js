@@ -7,7 +7,7 @@ module.exports = async (req, res, next) => {
             cpf: Joi.string().required(),
             data_nascimento: Joi.date().required(),
             email: Joi.string().required(),
-            senha: Joi.string().min(3).required(),
+            senha: Joi.string().min(6).required(),
             habilitado: Joi.string().valid('sim','não').required()
         });
 

@@ -1,14 +1,13 @@
 const CarroSchema = require('../schema/CarroSchema');
-
 class CarroRepository {
     async create(payload) {
         return CarroSchema.create(payload);
     }
-    async find() {
-        return CarroSchema.find();
+    async find($payload) {
+        return CarroSchema.find($payload);
     }
     async delete(payload) {
-        return CarroSchema.deleteOne({"_id":payload});
+        return CarroSchema.findByIdAndRemove({"_id":payload});
     }
     async findById(payload) {
         return CarroSchema.findById(payload);
