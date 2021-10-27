@@ -4,7 +4,11 @@ const PessoaSchema = mongoose.Schema({
     nome: String,
     cpf : String,
     data_nascimento :Date,
-    email : String,
+    email : {type :String,
+        required: true,
+        
+        unique: true
+    },
     senha : String,
     habilitado : String
 
