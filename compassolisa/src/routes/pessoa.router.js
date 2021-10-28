@@ -3,7 +3,7 @@ const createValidation = require('../app/validation/pessoa/create');
 const PessoaSchema = require('../app/schema/PessoaSchema');
 
 
-module.exports = (server, routes, prefix = '/pessoa') => {
+module.exports = (server, routes, prefix = '/people') => {
     routes.post('/', createValidation, PessoaController.create);
     routes.get('/', PessoaController.find);
     routes.get('/:id', PessoaController.findById);

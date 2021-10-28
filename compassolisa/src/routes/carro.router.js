@@ -4,7 +4,7 @@ const idValidation = require('../app/validation/idValidation.js');
 const CarroSchema = require('../app/schema/CarroSchema');
 
 
-module.exports = (server, routes, prefix = '/carro') => {
+module.exports = (server, routes, prefix = '/car') => {
     routes.post('/', createValidation,CarroController.create);
     routes.get('/', CarroController.find);
     routes.get('/:id',idValidation,CarroController.findById);

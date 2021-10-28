@@ -2,11 +2,11 @@ const CarroService = require('../service/CarroService');
 
 class CarroController {
     async create(req, res) {
+        
         const result = await CarroService.create(req.body);
         return res.status(201).json(result)
     }
     async find(req, res) {
-        console.log(req.query);
         const result = await CarroService.find(req.query);
         return res.status(201).json(result)
     }
@@ -16,7 +16,10 @@ class CarroController {
     }
     async findById(req, res) {
         const result = await CarroService.findById(req.params.id);
-        return res.status(201).json(result)
+        if(result == null){
+            return res.status(404).json(result);
+        }
+        return res.status(201).json(result);
     }
     async update(req, res) {
         const result = await CarroService.update(req.params.id,req.body);
