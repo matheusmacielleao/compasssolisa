@@ -15,6 +15,9 @@ class PessoaController {
     }
     async findById(req, res) {
         const result = await PessoaService.findById(req.params.id);
+        if (result == null) {
+            return res.status(404).json(result);
+        }
         return res.status(201).json(result)
     }
     async update(req, res) {

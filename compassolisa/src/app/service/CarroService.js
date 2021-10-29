@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 class CarroService {
     async create(payload) {
         try {
-            
+            console.log(payload.cpf);
+            console.log(payload.data_nascimento);
             const result = await CarroRepository.create(payload);
             return result;
         } catch (error) {
