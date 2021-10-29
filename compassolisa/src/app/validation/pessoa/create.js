@@ -17,6 +17,7 @@ module.exports = async (req, res, next) => {
         if (Math.floor(moment(new Date()).diff(moment(req.body.data_nascimento), 'years', true)) < 18) {
             return res.status(400).json("menores de idade não permitidos");
         }
+        
         // testar cpf
         var Soma;
         var Resto;

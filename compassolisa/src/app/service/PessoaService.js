@@ -1,8 +1,10 @@
 const PessoaRepository = require('../repository/PessoaRepository');
+const moment = require('moment');
 
 class PessoaService {
     async create(payload) {
         try {
+            
             const result = await PessoaRepository.create(payload);
             return result;
         } catch (error) {
