@@ -9,8 +9,7 @@ module.exports = async (req, res, next) => {
             acessorios :Joi.array().unique().min(1).items({descricao: Joi.string()}).required(),
             quantidadePassageiros: Joi.number().required()
         });
-
-        
+ 
         const { error } = await schema.validate(req.body, { abortEarly: true });
         if (error) throw error
         return next();
