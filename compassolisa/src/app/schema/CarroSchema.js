@@ -2,11 +2,27 @@ const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 
 const CarroSchema = mongoose.Schema({
-    modelo: String,
-    cor: String,
-    ano: Number,
-    quantidadePassageiros: Number,
-    acessorios : [{descricao : String}]
+    modelo: {
+        type:String,
+        required:true
+    },
+    cor: {
+        type: String,
+        required: true
+    },
+    ano:{
+        type:Number,
+        required:true
+    },
+    quantidadePassageiros:{
+        type:Number,
+        required:true
+    },
+    acessorios: [{
+        descricao: {
+            type: String,
+            required: true
+        }}]
 
 })
 

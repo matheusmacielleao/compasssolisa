@@ -2,45 +2,30 @@ const PessoaRepository = require('../repository/PessoaRepository');
 const moment = require('moment');
 
 class PessoaService {
+    
     async create(payload) {
-        try {
-            const result = await PessoaRepository.create(payload);
-            return result;
-        } catch (error) {
-            return error;
-        }
+        const result = await PessoaRepository.create(payload);
+        return result;
     }
+
     async find(payload) {
-        try {
-            const result = await PessoaRepository.find(payload);
-            return result;
-        } catch (error) {
-            return error;
-        }
+        const result = await PessoaRepository.find(payload);
+        return result;
     }
+
     async delete(payload) {
-        try {
-            const result = await PessoaRepository.delete(payload);
-            return result;
-        } catch (error) {
-            return error;
-        }
+        const result = await PessoaRepository.delete(payload);
+        return result;    
     }
+
     async findById(payload) {
-        try {
-            const result = await PessoaRepository.findById(payload);
-            return result;
-        } catch (error) {
-            return error;
-        }
+        const result = await PessoaRepository.findById(payload);
+        return result;       
     }
-    async update(id, payload) {
-        try {
-            const result = await PessoaRepository.update(id, payload);
-            return result;
-        } catch (error) {
-            return error;
-        }
+
+    async update(id, payload) {   
+        const result = await PessoaRepository.update(id, payload);
+        return result;     
     }
 
 }

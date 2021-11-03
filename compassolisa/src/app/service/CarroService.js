@@ -3,46 +3,34 @@ const mongoose = require('mongoose');
 
 class CarroService {
     async create(payload) {
-        try {
-            console.log(payload.cpf);
-            console.log(payload.data_nascimento);
-            const result = await CarroRepository.create(payload);
-            return result;
-        } catch (error) {
-            return error;
-        }
+       
+        const result = await CarroRepository.create(payload);
+        return result;
+       
     }
     async find(payload) {
-        try {
-            const result = await CarroRepository.find(payload);
-            return result;
-        } catch (error) {
-            return error;
-        }
+       
+        const result = await CarroRepository.find(payload);
+        return result;
+        
     }
     async delete(payload) {
-        try {
-            const result = await CarroRepository.delete(payload);
-            return result;
-        } catch (error) {
-            return error;
-        }
+        
+        const result = await CarroRepository.delete(payload);
+        return result;
+        
     }
     async findById(payload) {
-        try {
-            const result = await CarroRepository.findById(payload);
-            return result;
-        } catch (error) {
-            return error;
-        }
+       
+        const result = await CarroRepository.findById(payload);
+        return result;
+       
     }
     async update(id,payload) {
-        try {
-            const result = await CarroRepository.update(id,payload);
-            return result;
-        } catch (error) {
-            return error;
-        }
+       
+        const result = await CarroRepository.update(id,payload);
+        return result;
+        
     }
     
 }

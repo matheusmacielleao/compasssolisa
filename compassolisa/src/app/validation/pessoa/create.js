@@ -5,10 +5,10 @@ const moment = require('moment');
 module.exports = async (req, res, next) => {
     try {
         const schema = Joi.object({
-            nome: Joi.string().required(),
+            nome: Joi.string().trim().required(),
             cpf: Joi.string().regex(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/).required(),
             data_nascimento: Joi.date().required(),
-            email: Joi.string().regex(/.+\@.+\..+/).required(),
+            email: Joi.string().email().required(),
             senha: Joi.string().min(6).required(),
             habilitado: Joi.string().valid('sim','não').required()
         });
