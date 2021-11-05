@@ -72,7 +72,13 @@ const LocadoraSchema = mongoose.Schema({
             ],
             required: true
         },
-    }]
+        isFilial: {
+            type: Boolean,
+            required: true
+        }
+       
+    }],
+    
 
 })
 

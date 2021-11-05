@@ -1,13 +1,9 @@
 const { paginateSerialize, serialize } = require('../serialize/LocadoraSerialize');
 const LocadoraService = require('../service/LocadoraService');
-const axios = require('axios').default;
 
 class LocadoraController {
     async create(req, res) {
-        req.body.endereco = axios.get('https://viacep.com.br/ws/96205380/json')
-            .then(function (response) {
-                console.log(response);
-            });
+        
         const result = await LocadoraService.create(req.body);
         return res.status(201).json(serialize(result))
     }
