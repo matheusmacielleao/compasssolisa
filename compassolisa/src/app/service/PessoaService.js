@@ -1,5 +1,4 @@
 const PessoaRepository = require('../repository/PessoaRepository');
-const moment = require('moment');
 
 class PessoaService {
     

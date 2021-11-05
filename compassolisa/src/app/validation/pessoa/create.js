@@ -6,7 +6,7 @@ module.exports = async (req, res, next) => {
     try {
         const schema = Joi.object({
             nome: Joi.string().trim().required(),
-            cpf: Joi.string().regex(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/).required(),
+            cpf: Joi.string().regex().required(),
             data_nascimento: Joi.date().required(),
             email: Joi.string().email().required(),
             senha: Joi.string().min(6).required(),
@@ -14,9 +14,9 @@ module.exports = async (req, res, next) => {
         });
         const { error } = await schema.validate(req.body, { abortEarlY: true });
         if (error) throw error
-        if (Math.floor(moment(new Date()).diff(moment(req.body.data_nascimento), 'years', true)) < 18) {
-            return res.status(400).json("menores de idade não permitidos");
-        }
+        //if (Math.floor(moment(new Date()).diff(moment(req.body.data_nascimento), 'years', true)) < 18) {
+          //  return res.status(400).json("menores de idade não permitidos");
+        //}
         
         // testar cpf
         var Soma;
