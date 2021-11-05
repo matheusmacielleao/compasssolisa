@@ -11,7 +11,7 @@ module.exports = (server, routes, prefix = '/api/v1/people') => {
     routes.get('/', PessoaController.find);
     routes.get('/:id', PessoaController.findById);
     routes.delete('/:id', PessoaController.delete);
-    routes.put('/:id',updateValidation ,PessoaController.update);
+    routes.put('/:id',createValidation ,PessoaController.update);
     server.use(prefix, routes);
 }
 
