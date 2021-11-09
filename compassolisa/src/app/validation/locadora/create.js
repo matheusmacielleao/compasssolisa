@@ -3,11 +3,15 @@ const Joi = require('joi');
 module.exports = async (req, res, next) => {
   try {
     const schema = Joi.object({
-      modelo: Joi.string().trim().required(),
-      cor: Joi.string().trim().required(),
-      ano: Joi.number().integer().min(1950).max(2022).required(),
-      acessorios: Joi.array().unique().min(1).items({ descricao: Joi.string().trim() }).required(),
-      quantidadePassageiros: Joi.number().required()
+      nome: Joi.string().trim().required(),
+      cnpj: Joi.string().required(),
+      atividades: Joi.string().trim().required(),
+      endereco: Joi.array().unique().min(1).items({
+          cep: Joi.string().trim().required(),
+          complemento: Joi.string().trim(),
+          number: Joi.number().required(),
+          isFilial: Joi.boolean().required()
+        }).required()
     });
 
     const { error } = await schema.validate(req.body, { abortEarly: true });
