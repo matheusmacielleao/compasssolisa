@@ -2,7 +2,6 @@ const PessoaSchema = require('../schema/PessoaSchema');
 
 class PessoaRepository {
   async create(payload) {
-    console.log(payload.cpf);
     return PessoaSchema.create(payload);
   }
 

@@ -1,4 +1,4 @@
-const PessoaController = require('../app/controller/PessoaController.js');
+const PessoaController = require('../app/controller/PessoaController');
 const createValidation = require('../app/validation/pessoa/create');
 const updateValidation = require('../app/validation/pessoa/update');
 

@@ -12,11 +12,7 @@ module.exports = async (req, res, next) => {
       senha: Joi.string().min(6),
       habilitado: Joi.string().valid('sim', 'não')
     });
-    const { error } = await schema.validate(req.body, { abortEarlY: true });
-    if (Math.floor(moment(new Date()).diff(moment(req.body.data_nascimento), 'years', true)) < 18) {
-      return res.status(400).json('menores de idade não permitidos');
-    }
-
+    const { error } = await schema.validate(req.body, { abortEarly: false });
     if (error) throw error;
     return next();
   } catch (error) {
