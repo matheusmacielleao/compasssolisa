@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const ErroSerialize = require('../../serialize/ErroSerialize');
 
 module.exports = async (req, res, next) => {
   try {
@@ -16,7 +17,7 @@ module.exports = async (req, res, next) => {
             .regex(/^\d{5}-\d{3}$/)
             .trim()
             .required(),
-          complemento: Joi.string().trim(),
+          complemento: Joi.string().trim().optional(),
           number: Joi.number().required(),
           isFilial: Joi.boolean().required()
         })
@@ -27,14 +28,6 @@ module.exports = async (req, res, next) => {
     if (error) throw error;
     return next();
   } catch (error) {
-    const err = [];
-    const { details } = error;
-    details.forEach((e) => {
-      err.push({
-        description: e.path[0],
-        name: e.message
-      });
-    });
-    return res.status(400).json(err);
+    return res.status(400).json(ErroSerialize(error));
   }
 };

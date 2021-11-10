@@ -1,38 +1,63 @@
 const { paginateSerialize, serialize } = require('../serialize/CarroSerialize');
+const ErroSerialize = require('../serialize/ErroSerialize');
 const CarroService = require('../service/CarroService');
 
 class CarroController {
   async create(req, res) {
-    const result = await CarroService.create(req.body);
-    return res.status(201).json(serialize(result));
+    try {
+      const result = await CarroService.create(req.body);
+      return res.status(201).json(serialize(result));
+    } catch (error) {
+      return res.status(400).json(ErroSerialize(error));
+    }
   }
 
   async find(req, res) {
-    const result = await CarroService.find(req.query);
-    return res.status(200).json(paginateSerialize(result));
+    try {
+      const result = await CarroService.find(req.query);
+      return res.status(200).json(paginateSerialize(result));
+    } catch (error) {
+      return res.status(400).json(ErroSerialize(error));
+    }
   }
 
   async delete(req, res) {
-    await CarroService.delete(req.params.id);
-    return res.status(204).json({});
+    try {
+      await CarroService.delete(req.params.id);
+      return res.status(204).json({});
+    } catch (error) {
+      return res.status(400).json(ErroSerialize(error));
+    }
   }
 
   async findById(req, res) {
-    const result = await CarroService.findById(req.params.id);
-    if (result == null) {
-      return res.status(404).json(result);
+    try {
+      const result = await CarroService.findById(req.params.id);
+      if (result == null) {
+        return res.status(404).json(result);
+      }
+      return res.status(201).json(serialize(result));
+    } catch (error) {
+      return res.status(400).json(ErroSerialize(error));
     }
-    return res.status(201).json(serialize(result));
   }
 
   async update(req, res) {
-    const result = await CarroService.update(req.params.id, req.body);
-    return res.status(200).json(serialize(result));
+    try {
+      const result = await CarroService.update(req.params.id, req.body);
+      return res.status(200).json(serialize(result));
+    } catch (error) {
+      return res.status(400).json(ErroSerialize(error));
+    }
   }
 
   async patchAcessorio(req, res) {
-    const result = await CarroService.patchAcessorio(req.params.idCarro, req.params.idAcessorio, req.body);
-    return res.status(200).json(result);
+    try {
+      const result = await CarroService.patchAcessorio(req.params.idCarro, req.params.idAcessorio, req.body);
+      return res.status(200).json(result);
+    } catch (error) {
+      return res.status(400).json(ErroSerialize(error));
+    }
   }
 }
 

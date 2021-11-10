@@ -1,5 +1,4 @@
 const Joi = require('joi');
-const moment = require('moment');
 const ErroSerialize = require('../../serialize/ErroSerialize');
 
 module.exports = async (req, res, next) => {
@@ -16,10 +15,6 @@ module.exports = async (req, res, next) => {
     });
     const { error } = await schema.validate(req.body, { abortEarlY: true });
     if (error) throw error;
-    // if (Math.floor(moment(new Date()).diff(moment(req.body.data_nascimento), 'years', true)) < 18) {
-    //  return res.status(400).json("menores de idade não permitidos");
-    // }
-
     // testar cpf
     let Soma;
     let i;
