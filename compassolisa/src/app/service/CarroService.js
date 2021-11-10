@@ -1,48 +1,36 @@
 const CarroRepository = require('../repository/CarroRepository');
-const mongoose = require('mongoose');
 
 class CarroService {
-    async create(payload) {
-        try {
-            const result = await CarroRepository.create(payload);
-            return result;
-        } catch (error) {
-            return error;
-        }
-    }
-    async find(payload) {
-        try {
-            const result = await CarroRepository.find(payload);
-            return result;
-        } catch (error) {
-            return error;
-        }
-    }
-    async delete(payload) {
-        try {
-            const result = await CarroRepository.delete(payload);
-            return result;
-        } catch (error) {
-            return error;
-        }
-    }
-    async findById(payload) {
-        try {
-            const result = await CarroRepository.findById(payload);
-            return result;
-        } catch (error) {
-            return error;
-        }
-    }
-    async update(id,payload) {
-        try {
-            const result = await CarroRepository.update(id,payload);
-            return result;
-        } catch (error) {
-            return error;
-        }
-    }
-    
+  async create(payload) {
+    const result = await CarroRepository.create(payload);
+    return result;
+  }
+
+  async find(payload) {
+    const result = await CarroRepository.find(payload);
+    return result;
+  }
+
+  async delete(payload) {
+    const result = await CarroRepository.delete(payload);
+    return result;
+  }
+
+  async findById(payload) {
+    const result = await CarroRepository.findById(payload);
+    return result;
+  }
+
+  async update(id, payload) {
+    const result = await CarroRepository.update(id, payload);
+    return result;
+  }
+
+  async patchAcessorio(idCarro, idAcessorio, payload) {
+    const result = await CarroRepository.patchAcessorio(idCarro, idAcessorio, payload);
+    return result;
+  }
+
 }
 
 module.exports = new CarroService();
