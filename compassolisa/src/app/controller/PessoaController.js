@@ -1,10 +1,16 @@
+const ErroSerialize = require('../serialize/ErroSerialize');
 const { paginateSerialize, serialize } = require('../serialize/PessoaSerialize');
+
 const PessoaService = require('../service/PessoaService');
 
 class PessoaController {
   async create(req, res) {
-    const result = await PessoaService.create(req.body);
-    return res.status(201).json(serialize(result));
+    try {
+      const result = await PessoaService.create(req.body);
+      return res.status(201).json(serialize(result));
+    } catch (error) {
+      return res.status(400).json(ErroSerialize(error));
+    }
   }
 
   async find(req, res) {

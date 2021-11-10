@@ -30,7 +30,6 @@ class CarroService {
     const result = await CarroRepository.patchAcessorio(idCarro, idAcessorio, payload);
     return result;
   }
-
 }
 
 module.exports = new CarroService();

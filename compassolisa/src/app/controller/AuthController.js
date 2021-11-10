@@ -15,6 +15,8 @@ class AuthController {
     pessoa.senha = undefined;
     const { habilitado } = pessoa;
     const token = jwt.sign({ id: pessoa._id }, authConfig.secret, { expiresIn: 86400 });
+    req.body.token = token;
+    req.headers.authorization = `Bearer ${token}`;
     return res.status(201).json({ email, habilitado, token });
   }
 }

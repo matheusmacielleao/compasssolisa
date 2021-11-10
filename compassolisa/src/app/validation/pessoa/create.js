@@ -1,13 +1,16 @@
 const Joi = require('joi');
 const moment = require('moment');
+const ErroSerialize = require('../../serialize/ErroSerialize');
 
 module.exports = async (req, res, next) => {
   try {
     const schema = Joi.object({
       nome: Joi.string().trim().required(),
-      cpf: Joi.string().unique().required(),
+      cpf: Joi.string()
+        .regex(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/)
+        .required(),
       data_nascimento: Joi.date().required(),
-      email: Joi.string().email().unique().required(),
+      email: Joi.string().email().required(),
       senha: Joi.string().min(6).required(),
       habilitado: Joi.string().valid('sim', 'não').required()
     });
@@ -40,14 +43,6 @@ module.exports = async (req, res, next) => {
     if (Resto !== parseInt(strCPF.substring(10, 11), 10)) return res.status(400).json('Cpf Invalido');
     return next();
   } catch (error) {
-    const err = [];
-    const { details } = error;
-    details.forEach((e) => {
-      err.push({
-        description: e.path[0],
-        name: e.message
-      });
-    });
-    return res.status(400).json(err);
+    return res.status(400).json(ErroSerialize(error));
   }
 };

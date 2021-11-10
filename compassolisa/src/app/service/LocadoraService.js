@@ -1,7 +1,17 @@
+const MultiplasMatrizes = require('../errors/MultiplasMatrizes');
 const LocadoraRepository = require('../repository/LocadoraRepository');
 
 class LocadoraService {
   async create(payload) {
+    let matrizCounter = 0;
+    payload.endereco.forEach((endereco) => {
+      if (!endereco.isFilial) {
+        matrizCounter += 1;
+      }
+      if (matrizCounter > 1) {
+        throw new MultiplasMatrizes();
+      }
+    });
     const result = await LocadoraRepository.create(payload);
     return result;
   }
