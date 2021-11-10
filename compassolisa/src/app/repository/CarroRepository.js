@@ -1,23 +1,6 @@
 const CarroSchema = require('../schema/CarroSchema');
 
 class CarroRepository {
-<<<<<<< HEAD
-    async create(payload) {
-        return CarroSchema.create(payload);
-    }
-    async find($payload) {
-        return CarroSchema.find($payload);
-    }
-    async delete(payload) {
-        return CarroSchema.findByIdAndRemove({"_id":payload});
-    }
-    async findById(payload) {
-        return CarroSchema.findById(payload);
-    }
-    async update(_id,payload) {
-        return CarroSchema.findOneAndUpdate({ _id }, payload, { new: true });
-    }
-=======
   async create(payload) {
     return CarroSchema.create(payload);
   }
@@ -41,7 +24,6 @@ class CarroRepository {
   async update(_id, payload) {
     return CarroSchema.findOneAndUpdate({ _id }, payload, { new: true });
   }
->>>>>>> 5af20ef314abb8d9464b71d982f44ed5466a86a3
 
   async patchAcessorio(_id, idAcessorio, payload) {
     const result = await CarroSchema.findOneAndUpdate(
