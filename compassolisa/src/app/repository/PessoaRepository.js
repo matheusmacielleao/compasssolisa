@@ -14,7 +14,7 @@ class PessoaRepository {
         return PessoaSchema.findById(payload);
     }
     async update(_id, payload) {
-        return PessoaSchema.findOneAndUpdate({ _id }, payload);
+        return PessoaSchema.findOneAndUpdate({ _id }, payload, { new: true });
     }
 
 }

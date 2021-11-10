@@ -13,7 +13,7 @@ class CarroRepository {
         return CarroSchema.findById(payload);
     }
     async update(_id,payload) {
-        return CarroSchema.findOneAndUpdate({_id},payload);
+        return CarroSchema.findOneAndUpdate({ _id }, payload, { new: true });
     }
 
 }

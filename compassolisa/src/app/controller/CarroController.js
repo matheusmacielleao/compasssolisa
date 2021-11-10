@@ -1,7 +1,8 @@
 const CarroService = require('../service/CarroService');
+const mongoosePaginate = require('mongoose-paginate-v2');
+
 class CarroController {
-    async create(req, res) {
-        
+    async create(req, res) {      
         const result = await CarroService.create(req.body);
         return res.status(201).json(result)
     }
