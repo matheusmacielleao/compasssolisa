@@ -7,10 +7,10 @@ class AuthController {
     const { email, senha } = req.body;
     const pessoa = await PessoaSchema.findOne({ email });
     if (!pessoa) {
-      return res.status(400).json('Email não encontrado');
+      return res.status(400).json({descripition:"email",name:'Email não encontrado'});
     }
     if (senha !== pessoa.senha) {
-      return res.status(400).json('Senha invalida');
+      return res.status(400).json({descripition:"senha",name:'Senha invalida'});
     }
     pessoa.senha = undefined;
     const { habilitado } = pessoa;
