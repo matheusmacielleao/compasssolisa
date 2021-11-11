@@ -35,7 +35,7 @@ class PessoaService {
     if (Math.floor(moment(new Date()).diff(moment(payload.data_nascimento), 'years', true)) < 18) {
       throw new MenorDeIdade();
     }
-    const strCPF = payload.cpf;
+    const strCPF = payload.cpf.replace('.', '').replace('.', '').replace('-', '');
     let Soma;
     let Resto;
     Soma = 0;

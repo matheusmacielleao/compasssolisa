@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const crypto = require('crypto');
 const mongoosePaginate = require('mongoose-paginate-v2');
 
 const PessoaSchema = mongoose.Schema({
@@ -19,7 +20,9 @@ const PessoaSchema = mongoose.Schema({
   email: { type: String, required: true, unique: true },
   senha: {
     type: String,
-    required: true
+    required: true,
+    select: false,
+    set: (value) => crypto.createHash('md5').update(value).digest('hex')
   },
   habilitado: {
     type: String,

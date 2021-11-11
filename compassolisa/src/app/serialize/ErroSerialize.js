@@ -1,4 +1,5 @@
-const ErroSerialize = (error) => error.details.map((detail) => ({
+const ErroSerialize = (error) =>
+  error.details.map((detail) => ({
     description: detail.message,
     name: detail.path.join('.')
   }));
