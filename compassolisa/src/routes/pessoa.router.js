@@ -1,6 +1,5 @@
 const PessoaController = require('../app/controller/PessoaController');
 const createValidation = require('../app/validation/pessoa/create');
-const updateValidation = require('../app/validation/pessoa/update');
 
 module.exports = (server, routes, prefix = '/api/v1/people') => {
   routes.post('/', createValidation, PessoaController.create);

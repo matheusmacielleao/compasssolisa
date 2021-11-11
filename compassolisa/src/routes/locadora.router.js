@@ -9,6 +9,6 @@ module.exports = (server, routes, prefix = '/api/v1/rental') => {
   routes.get('/', LocadoraController.find);
   routes.get('/:id', idValidation, LocadoraController.findById);
   routes.delete('/:id', idValidation, LocadoraController.delete);
-  routes.put('/:id', idValidation, LocadoraController.update);
+  routes.put('/:id', createValidation, idValidation, LocadoraController.update);
   server.use(prefix, routes);
 };

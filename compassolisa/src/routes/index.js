@@ -7,11 +7,11 @@ const docs = require('./docs.router');
 
 module.exports = (server) => {
   server.use((req, res, next) => {
+    docs(server, new Router());
     carro(server, new Router());
     pessoa(server, new Router());
     auth(server, new Router());
     locadora(server, new Router());
-    docs(server, new Router());
     next();
   });
 };

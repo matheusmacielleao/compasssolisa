@@ -37,12 +37,19 @@ class PessoaService {
 
   async update(id, payload) {
     this.check(payload);
+    const checkCpf = await PessoaRepository.find({ cpf: payload.cpf });
+    if (checkCpf.docs.length > 0) {
+      throw new CpfJaCadastrado();
+    }
+    const checkEmail = await PessoaRepository.find({ email: payload.email });
+    if (checkEmail.docs.length > 0) {
+      throw new EmailJaCadastrado();
+    }
     const result = await PessoaRepository.update(id, payload);
     return result;
   }
 
   check(payload) {
-    
     if (Math.floor(moment(new Date()).diff(moment(payload.data_nascimento), 'years', true)) < 18) {
       throw new MenorDeIdade();
     }
