@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const crypto = require('crypto');
+const bcrypt = require('bcryptjs');
 const mongoosePaginate = require('mongoose-paginate-v2');
 
 const PessoaSchema = mongoose.Schema({
@@ -21,14 +21,20 @@ const PessoaSchema = mongoose.Schema({
   senha: {
     type: String,
     required: true,
-    select: false,
-    set: (value) => crypto.createHash('md5').update(value).digest('hex')
+    select: false
   },
   habilitado: {
     type: String,
     enum: ['sim', 'não'],
     required: true
   }
+});
+
+PessoaSchema.pre('save', async function encrypted(next) {
+  const hash = await bcrypt.hash(this.senha, 10);
+  this.senha = hash;
+
+  next();
 });
 
 PessoaSchema.plugin(mongoosePaginate);
