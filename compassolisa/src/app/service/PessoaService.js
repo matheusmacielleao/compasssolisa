@@ -1,11 +1,21 @@
 const moment = require('moment');
 const CpfInvalido = require('../errors/CpfInvalido');
+const CpfJaCadastrado = require('../errors/CpfJaCadastrado');
+const EmailJaCadastrado = require('../errors/EmailJaCadastrado');
 const MenorDeIdade = require('../errors/MenorDeIdade');
 const PessoaRepository = require('../repository/PessoaRepository');
 
 class PessoaService {
   async create(payload) {
     this.check(payload);
+    const checkCpf = await PessoaRepository.find({ cpf: payload.cpf });
+    if (checkCpf.docs.length > 0) {
+      throw new CpfJaCadastrado();
+    }
+    const checkEmail = await PessoaRepository.find({ email: payload.email });
+    if (checkEmail.docs.length > 0) {
+      throw new EmailJaCadastrado();
+    }
     const result = await PessoaRepository.create(payload);
     return result;
   }
@@ -32,9 +42,7 @@ class PessoaService {
   }
 
   check(payload) {
-    if (this.find(payload.cpf)) {
-      throw new CpfJaCadastrado();
-    }
+    
     if (Math.floor(moment(new Date()).diff(moment(payload.data_nascimento), 'years', true)) < 18) {
       throw new MenorDeIdade();
     }
