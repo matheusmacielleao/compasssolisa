@@ -32,6 +32,9 @@ class PessoaService {
   }
 
   check(payload) {
+    if (this.find(payload.cpf)) {
+      throw new CpfJaCadastrado();
+    }
     if (Math.floor(moment(new Date()).diff(moment(payload.data_nascimento), 'years', true)) < 18) {
       throw new MenorDeIdade();
     }

@@ -27,7 +27,7 @@ class CarroRepository {
 
   async patchAcessorio(_id, idAcessorio, payload) {
     const result = await CarroSchema.findOneAndUpdate(
-      { 'acessorios._id': idAcessorio },
+      { _id, 'acessorios._id': idAcessorio },
       {
         $set: {
           'acessorios.$.descricao': payload.descricao
