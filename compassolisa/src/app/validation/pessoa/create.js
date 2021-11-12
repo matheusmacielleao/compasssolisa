@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const Joi = require('joi').extend(require('@joi/date'));
 const ErroSerialize = require('../../serialize/ErroSerialize');
 
 module.exports = async (req, res, next) => {
@@ -8,7 +8,7 @@ module.exports = async (req, res, next) => {
       cpf: Joi.string()
         .regex(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/)
         .required(),
-      data_nascimento: Joi.date().required(),
+      data_nascimento: Joi.date().format('DD/MM/YYYY').required(),
       email: Joi.string().email().required(),
       senha: Joi.string().min(6).required(),
       habilitado: Joi.string().valid('sim', 'não').required()

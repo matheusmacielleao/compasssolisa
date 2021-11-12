@@ -8,6 +8,7 @@ const PessoaRepository = require('../repository/PessoaRepository');
 
 class PessoaService {
   async create(payload) {
+    payload.data_nascimento = moment(payload.data_nascimento, 'DD/MM/YYYY').format('YYYY-MM-DD');
     this.check(payload);
     const checkCpf = await PessoaRepository.find({ cpf: payload.cpf });
     if (checkCpf.docs.length > 0) {
@@ -37,6 +38,7 @@ class PessoaService {
   }
 
   async update(id, payload) {
+    payload.data_nascimento = moment(payload.data_nascimento, 'DD/MM/YYYY').format('YYYY-MM-DD');
     const exist = await this.findById(id);
     if (!exist) {
       throw new PessoaNaoExiste();
