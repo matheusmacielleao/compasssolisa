@@ -1,11 +1,12 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Locadora de Carros API",
-    "description": "API de Gerenciamento de Locadiras.",
+    "title": "API LOCADORA COMPASSOLISA",
+    "description": "API de Gerenciamento de Locadoras de carros de luxo.",
     "version": "1.0.0",
     "contact": {
-      "name": "Matheus Maciel Leão"
+      "name": "Matheus Maciel Leão",
+      "email": "matheusmacielleao@gmail.com"
     }
   },
   "externalDocs": {

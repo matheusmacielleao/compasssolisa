@@ -17,7 +17,7 @@
   - @joi/dat
   - Moment
   - Mongoose Paginate v
-  - bcryptjs
+  - cryptjs
   - JSON Web Toke
   - Swagger UI Express
   - Axios
@@ -58,14 +58,12 @@ No diretorio /compassolisa:
 Para rodar como usuario, usando apenas node:
 
 ```
-
 npm run user
 ```
 
 Para rodar como desenvolvedor ,usando apenas nodemon:
 
 ```
-
 npm run dev
 ```
 
