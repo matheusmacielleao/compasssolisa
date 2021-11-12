@@ -41,7 +41,7 @@ class PessoaService {
     if (!exist) {
       throw new PessoaNaoExiste();
     }
-    this.check(exist);
+    this.check(payload);
     const checkCpf = await PessoaRepository.find({ cpf: payload.cpf });
     if (checkCpf.docs.length > 0 && checkCpf.docs[0].cpf !== payload.cpf) {
       throw new CpfJaCadastrado();
