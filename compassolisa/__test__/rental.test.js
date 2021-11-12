@@ -81,3 +81,61 @@ describe('listar locadoras', () => {
     expect(status).toBe(200);
   });
 });
+describe('listar locadora por id', () => {
+  it('retornar codigo 201', async () => {
+    const locadoraMock = {
+      nome: 'Localiza',
+      cnpj: '46.609.837/0001-33',
+      atividades: 'aluguel de carros por todo o brasil',
+      endereco: [
+        {
+          cep: '96205-380',
+          number: 197,
+          isFilial: false
+        }
+      ]
+    };
+    const { text } = await request(app).post('/api/v1/rental/').send(locadoraMock);
+    const { _id } = JSON.parse(text);
+
+    const response = await request(app).get(`/api/v1/people/${_id.toString()}`);
+
+    const { body } = response;
+
+    expect(body.nome).toBe(locadoraMock.nome);
+    expect(body.cnpj).toBeUndefined(locadoraMock.cnpj);
+    expect(body.atividades).toBeUndefined(locadoraMock.atividades);
+    const { status } = response;
+    expect(status).toBe(204);
+  });
+});
+
+describe('deletar locadora', () => {
+  it('retornar codigo 204', async () => {
+    const locadoraMock = {
+      nome: 'Localiza',
+      cnpj: '46.609.837/0001-33',
+      atividades: 'aluguel de carros por todo o brasil',
+      endereco: [
+        {
+          cep: '96205-380',
+          number: 197,
+          isFilial: false
+        }
+      ]
+    };
+    const { text } = await request(app).post('/api/v1/rental/').send(locadoraMock);
+    const { _id } = JSON.parse(text);
+
+    const response = await request(app).delete(`/api/v1/people/${_id.toString()}`);
+
+    const { body } = response;
+
+    expect(body.nome).toBeUndefined();
+    expect(body.cnpj).toBeUndefined();
+    expect(body.atividades).toBeUndefined();
+    expect(body.endereco).toBeUndefined();
+    const { status } = response;
+    expect(status).toBe(204);
+  });
+});
