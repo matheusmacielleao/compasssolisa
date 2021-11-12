@@ -4,6 +4,7 @@ const LocadoraSchema = require('../schema/LocadoraSchema');
 class LocadoraRepository {
   async create(payload) {
     for (let i = 0; i < payload.endereco.length; i++) {
+      // eslint-disable-next-line no-await-in-loop
       const busca = await axios
         .get(`https://viacep.com.br/ws/${payload.endereco[i].cep}/json`)
         .then((response) => response.data);
