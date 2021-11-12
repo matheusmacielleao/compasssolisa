@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "API LOCADORA COMPASSOLISA",
-    "description": "API de Gerenciamento de Locadoras de carros de luxo.",
+    "description": "API de Gerenciamento de Locadoras de carros de luxo.(Usar o campo authorize com a key gerada na rota de autenticação)",
     "version": "1.0.0",
     "contact": {
       "name": "Matheus Maciel Leão",
