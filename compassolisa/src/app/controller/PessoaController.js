@@ -1,5 +1,4 @@
 const { paginateSerialize, serialize } = require('../serialize/PessoaSerialize');
-
 const PessoaService = require('../service/PessoaService');
 
 class PessoaController {

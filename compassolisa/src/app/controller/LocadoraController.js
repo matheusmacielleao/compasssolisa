@@ -1,4 +1,3 @@
-const ErroSerialize = require('../serialize/ErroSerialize');
 const { paginateSerialize, serialize } = require('../serialize/LocadoraSerialize');
 const LocadoraService = require('../service/LocadoraService');
 
@@ -17,7 +16,7 @@ class LocadoraController {
       const result = await LocadoraService.find(req.query);
       return res.status(200).json(paginateSerialize(result));
     } catch (error) {
-      return res.status(400).json(ErroSerialize(error));
+      return res.status(400).json(error);
     }
   }
 
@@ -26,7 +25,7 @@ class LocadoraController {
       await LocadoraService.delete(req.params.id);
       return res.status(204).json({});
     } catch (error) {
-      return res.status(400).json(ErroSerialize(error));
+      return res.status(400).json(error);
     }
   }
 
@@ -38,7 +37,7 @@ class LocadoraController {
       }
       return res.status(201).json(serialize(result));
     } catch (error) {
-      return res.status(400).json(ErroSerialize(error));
+      return res.status(400).json(error);
     }
   }
 
@@ -47,7 +46,7 @@ class LocadoraController {
       const result = await LocadoraService.update(req.params.id, req.body);
       return res.status(200).json(serialize(result));
     } catch (error) {
-      return res.status(400).json(ErroSerialize(error));
+      return res.status(400).json(error);
     }
   }
 }

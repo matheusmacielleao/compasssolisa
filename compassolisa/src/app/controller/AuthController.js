@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const PessoaSchema = require('../schema/PessoaSchema');
 const authConfig = require('../../config/auth.json');
-const ErroSerialize = require('../serialize/ErroSerialize');
 
 class AuthController {
   async authenticate(req, res) {
@@ -22,7 +21,7 @@ class AuthController {
       req.headers.authorization = `Bearer ${token}`;
       return res.status(201).json({ email, habilitado, token });
     } catch (error) {
-      return res.status(400).json(ErroSerialize(error));
+      return res.status(400).json(error);
     }
   }
 }
