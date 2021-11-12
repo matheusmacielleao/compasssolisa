@@ -1,6 +1,5 @@
 const LocadoraController = require('../app/controller/LocadoraController');
 const createValidation = require('../app/validation/locadora/create');
-// const updateValidation = require('../app/validation/locadora/update');
 
 const idValidation = require('../app/validation/idValidation');
 

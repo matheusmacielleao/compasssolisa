@@ -3,6 +3,7 @@ const CpfInvalido = require('../errors/CpfInvalido');
 const CpfJaCadastrado = require('../errors/CpfJaCadastrado');
 const EmailJaCadastrado = require('../errors/EmailJaCadastrado');
 const MenorDeIdade = require('../errors/MenorDeIdade');
+const PessoaNaoExiste = require('../errors/PessoaNaoExiste');
 const PessoaRepository = require('../repository/PessoaRepository');
 
 class PessoaService {
@@ -36,13 +37,17 @@ class PessoaService {
   }
 
   async update(id, payload) {
-    this.check(payload);
+    const exist = await this.findById(id);
+    if (!exist) {
+      throw new PessoaNaoExiste();
+    }
+    this.check(exist);
     const checkCpf = await PessoaRepository.find({ cpf: payload.cpf });
-    if (checkCpf.docs.length > 0) {
+    if (checkCpf.docs.length > 0 && checkCpf.docs[0].cpf !== payload.cpf) {
       throw new CpfJaCadastrado();
     }
     const checkEmail = await PessoaRepository.find({ email: payload.email });
-    if (checkEmail.docs.length > 0) {
+    if (checkEmail.docs.length > 0 && checkEmail.docs[0].email !== payload.email) {
       throw new EmailJaCadastrado();
     }
     const result = await PessoaRepository.update(id, payload);

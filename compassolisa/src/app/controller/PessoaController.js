@@ -18,7 +18,7 @@ class PessoaController {
       const result = await PessoaService.find(req.query);
       return res.status(200).json(paginateSerialize(result));
     } catch (error) {
-      return res.status(400).json(ErroSerialize(error));
+      return res.status(400).json(error);
     }
   }
 
@@ -27,7 +27,7 @@ class PessoaController {
       await PessoaService.delete(req.params.id);
       return res.status(204).json({});
     } catch (error) {
-      return res.status(400).json(ErroSerialize(error));
+      return res.status(400).json(error);
     }
   }
 
@@ -39,7 +39,7 @@ class PessoaController {
       }
       return res.status(201).json(serialize(result));
     } catch (error) {
-      return res.status(400).json(ErroSerialize(error));
+      return res.status(400).json(error);
     }
   }
 
@@ -48,7 +48,7 @@ class PessoaController {
       const result = await PessoaService.update(req.params.id, req.body);
       return res.status(200).json(serialize(result));
     } catch (error) {
-      return res.status(400).json(ErroSerialize(error));
+      return res.status(400).json(error);
     }
   }
 }
