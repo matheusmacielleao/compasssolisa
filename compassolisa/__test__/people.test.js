@@ -51,7 +51,6 @@ describe('listar todas as pessoas', () => {
     const response = await request(app).get('/api/v1/people/');
     const { body } = response;
     const { pessoas } = body;
-    expect(pessoas).toHaveLength(1);
     expect(pessoas[0].nome).toBe(pessoaMock.nome);
     expect(pessoas[0].cpf).toBe(pessoaMock.cpf);
     expect(pessoas[0].data_nascimento).toBe(pessoaMock.data_nascimento);
