@@ -66,3 +66,75 @@ describe('criar carro', () => {
     expect(status).toBe(201);
   });
 });
+
+describe('listar todos os carros', () => {
+  it('retornar status 200', async () => {
+    const carroMock = {
+      modelo: 'Fusca',
+      cor: 'Azul',
+      ano: 2010,
+      acessorios: [
+        {
+          descricao: 'Piloto Automatico'
+        },
+        {
+          descricao: 'Trava Eletrica'
+        }
+      ],
+      quantidadePassageiros: 10
+    };
+
+    await request(app).post('/api/v1/car/').set('Authorization', `Bearer ${BearerToken}`).send(carroMock);
+
+    const response = await request(app).get('/api/v1/car/').set('Authorization', `Bearer ${BearerToken}`);
+    const { body } = response;
+    const { carros } = body;
+    expect(carros).toHaveLength(1);
+    expect(carros[0].modelo).toBe(carroMock.modelo);
+    expect(carros[0].cor).toBe(carroMock.cor);
+    expect(carros[0].ano).toBe(carroMock.ano);
+    expect(carros[0].acessorios[0].descricao).toBe(carroMock.acessorios[0].descricao);
+    expect(carros[0].acessorios[0].descricao).toBe(carroMock.acessorios[0].descricao);
+    const { status } = response;
+    expect(status).toBe(200);
+  });
+});
+
+describe('listar carro por Id', () => {
+  it('retornar status 200', async () => {
+    const carroMock = {
+      modelo: 'Fusca',
+      cor: 'Azul',
+      ano: 2010,
+      acessorios: [
+        {
+          descricao: 'Piloto Automatico'
+        },
+        {
+          descricao: 'Trava Eletrica'
+        }
+      ],
+      quantidadePassageiros: 10
+    };
+
+    const { text } = await request(app)
+      .post('/api/v1/car/')
+      .set('Authorization', `Bearer ${BearerToken}`)
+      .send(carroMock);
+
+    const { _id } = JSON.parse(text);
+
+    const response = await request(app)
+      .get(`/api/v1/car/${_id.toString()}`)
+      .set('Authorization', `Bearer ${BearerToken}`);
+    const { body } = response;
+    expect(body.modelo).toBe(carroMock.modelo);
+    expect(body.cor).toBe(carroMock.cor);
+    expect(body.ano).toBe(carroMock.ano);
+    expect(body.acessorios[0].descricao).toBe(carroMock.acessorios[0].descricao);
+    expect(body.acessorios[1].descricao).toBe(carroMock.acessorios[1].descricao);
+    expect(body.quantidadePassageiros).toBe(carroMock.quantidadePassageiros);
+    const { status } = response;
+    expect(status).toBe(200);
+  });
+});
