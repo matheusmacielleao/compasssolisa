@@ -21,18 +21,24 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 * MongoDB
 * NodeJS
 
-## 🚀 Instalando <Compassolisa>
+## 🚀 Instalando <API Locadora Compassolisa>
 
-Para instalar o <Compassolisa>, siga estas etapas:
+Para instalar o <API Locadora Compassolisa>, siga estas etapas:
 
-No Diretorio /compassolisa, execute no seu terminal de preferencia:
+Linux e macOS:
 ```
-<npm install>
+<comando_de_instalação>
+```
 
-## ☕ Usando <Compassolisa>
+Windows:
+```
+<comando_de_instalação>
+```
 
-Para usar <Compassolisa>, siga estas etapas:
+## ☕ Usando <API Locadora Compassolisa>
 
-```<npm run user>
-```<npm run user>
+Para usar <API Locadora Compassolisa>, siga estas etapas:
 
+```
+<exemplo_de_uso>
+```
