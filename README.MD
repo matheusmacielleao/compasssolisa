@@ -11,19 +11,19 @@
 - Node.JS
 - MongoDB 
 - Modulos Node Adicionais:
-  - Express.Js ,
-  - Mongoose ,
-  - Joi ,
-  - @joi/date,
-  - Moment ,
-  - Mongoose Paginate v2,
-  - bcryptjs ,
-  - JSON Web Token,
-  - Swagger UI Express ,
-  - Axios ,
-  - Nodemon; 
-- ViaCEP - Webservice CEP;
-- Postman.
+  - Express.Js
+  - Mongoose
+  - Joi
+  - @joi/dat
+  - Moment
+  - Mongoose Paginate v
+  - bcryptjs
+  - JSON Web Toke
+  - Swagger UI Express
+  - Axios
+  - Nodemon 
+- ViaCEP - Webservice CEP
+- Postman
 
 
 ## 💻 Pré-requisitos
