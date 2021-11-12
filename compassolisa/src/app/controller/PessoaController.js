@@ -1,4 +1,3 @@
-const ErroSerialize = require('../serialize/ErroSerialize');
 const { paginateSerialize, serialize } = require('../serialize/PessoaSerialize');
 
 const PessoaService = require('../service/PessoaService');

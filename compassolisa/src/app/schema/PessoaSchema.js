@@ -5,8 +5,7 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 const PessoaSchema = mongoose.Schema({
   nome: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   cpf: {
     type: String,
