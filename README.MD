@@ -25,14 +25,9 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
 Para instalar o <API Locadora Compassolisa>, siga estas etapas:
 
-Linux e macOS:
+Na pasta /compassolisa:
 ```
-<comando_de_instalação>
-```
-
-Windows:
-```
-<comando_de_instalação>
+npm install
 ```
 
 ## ☕ Usando <API Locadora Compassolisa>
