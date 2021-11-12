@@ -34,6 +34,13 @@ npm install
 
 Para usar <API Locadora Compassolisa>, siga estas etapas:
 
+No diretorio /compassolisa:
+Para rodar como usuario, usando apenas node:
+
 ```
-<exemplo_de_uso>
+Para rodar como usuario, usando apenas node:
+<npm run user>
+Para rodar como desenvolvedor ,usando apenas nodemon:
+<npm run dev>
+
 ```
