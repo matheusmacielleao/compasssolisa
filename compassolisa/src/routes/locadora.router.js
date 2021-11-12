@@ -1,5 +1,6 @@
 const LocadoraController = require('../app/controller/LocadoraController');
 const createValidation = require('../app/validation/locadora/create');
+const updateValidation = require('../app/validation/locadora/update');
 
 const idValidation = require('../app/validation/idValidation');
 
@@ -8,6 +9,6 @@ module.exports = (server, routes, prefix = '/api/v1/rental') => {
   routes.get('/', LocadoraController.find);
   routes.get('/:id', idValidation, LocadoraController.findById);
   routes.delete('/:id', idValidation, LocadoraController.delete);
-  routes.put('/:id', createValidation, idValidation, LocadoraController.update);
+  routes.put('/:id', updateValidation, idValidation, LocadoraController.update);
   server.use(prefix, routes);
 };

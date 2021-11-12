@@ -68,3 +68,9 @@ Para rodar como desenvolvedor ,usando apenas nodemon:
 
 npm run dev
 ```
+
+Para consumir a Api via Swaggwe, apos rodar:
+
+```
+http://127.0.0.1:3000/api/v1/api-docs
+```
