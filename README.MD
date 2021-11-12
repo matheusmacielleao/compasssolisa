@@ -1,22 +1,17 @@
-# Compassolisa
+# API Locadora Compassolisa
 
 <!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/matheusmacielleao/compasssolisa)
 
-<img src="exemplo-image.png" alt="exemplo imagem">
+> API REST FULL para o Gerenciamento de Locadora de carros de luxo, 
 
-> Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
+### Pré Requisitos 
 
-### Requisitos 
+- MONGODB
+- NODEJS
+- JAVASCRIPT
 
-O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
-
-- [x] Tarefa 1
-- [x] Tarefa 2
-- [x] Tarefa 3
-- [ ] Tarefa 4
-- [ ] Tarefa 5
 
 ## 💻 Pré-requisitos
 
