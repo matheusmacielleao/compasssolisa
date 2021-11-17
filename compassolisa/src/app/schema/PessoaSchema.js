@@ -16,7 +16,11 @@ const PessoaSchema = mongoose.Schema({
     type: Date,
     required: true
   },
-  email: { type: String, required: true, unique: true },
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
   senha: {
     type: String,
     required: true,
