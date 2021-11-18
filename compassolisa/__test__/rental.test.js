@@ -82,7 +82,7 @@ describe('listar locadoras', () => {
   });
 });
 describe('listar locadora por id', () => {
-  it('retornar codigo 201', async () => {
+  it('retornar codigo 200', async () => {
     const locadoraMock = {
       nome: 'Localiza',
       cnpj: '46.609.837/0001-33',
@@ -98,15 +98,15 @@ describe('listar locadora por id', () => {
     const { text } = await request(app).post('/api/v1/rental/').send(locadoraMock);
     const { _id } = JSON.parse(text);
 
-    const response = await request(app).get(`/api/v1/people/${_id.toString()}`);
+    const response = await request(app).get(`/api/v1/rental/${_id.toString()}`);
 
     const { body } = response;
 
     expect(body.nome).toBe(locadoraMock.nome);
-    expect(body.cnpj).toBeUndefined(locadoraMock.cnpj);
-    expect(body.atividades).toBeUndefined(locadoraMock.atividades);
+    expect(body.cnpj).toBe(locadoraMock.cnpj);
+    expect(body.atividades).toBe(locadoraMock.atividades);
     const { status } = response;
-    expect(status).toBe(204);
+    expect(status).toBe(200);
   });
 });
 
