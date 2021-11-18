@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
+const enumUF = require('../utils/enumUF');
 
 const LocadoraSchema = mongoose.Schema({
   nome: {
@@ -43,35 +44,7 @@ const LocadoraSchema = mongoose.Schema({
       },
       uf: {
         type: String,
-        enum: [
-          'AC',
-          'AL',
-          'AP',
-          'AM',
-          'BA',
-          'CE',
-          'DF',
-          'ES',
-          'GO',
-          'MA',
-          'MT',
-          'MS',
-          'MG',
-          'PA',
-          'PB',
-          'PR',
-          'PE',
-          'PI',
-          'RJ',
-          'RN',
-          'RS',
-          'RO',
-          'RR',
-          'SC',
-          'SP',
-          'SE',
-          'TO'
-        ],
+        enum: enumUF(),
         required: true
       },
       isFilial: {
