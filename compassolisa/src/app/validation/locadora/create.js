@@ -1,22 +1,18 @@
 const Joi = require('joi');
 const ErroSerialize = require('../../serialize/ErroSerialize');
+const { regexCpnj, regexCep } = require('../../utils/regex');
 
 module.exports = async (req, res, next) => {
   try {
     const schema = Joi.object({
       nome: Joi.string().trim().required(),
-      cnpj: Joi.string()
-        .regex(/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/)
-        .required(),
+      cnpj: Joi.string().regex(regexCpnj()).required(),
       atividades: Joi.string().trim().required(),
       endereco: Joi.array()
         .unique()
         .min(1)
         .items({
-          cep: Joi.string()
-            .regex(/^\d{5}-\d{3}$/)
-            .trim()
-            .required(),
+          cep: Joi.string().regex(regexCep).trim().required(),
           complemento: Joi.string().trim().optional(),
           number: Joi.number().required(),
           isFilial: Joi.boolean().required()
