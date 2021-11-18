@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 
-const ReservaSchema = mongoose.Schema({
+const LocacaoSchema = mongoose.Schema({
   id_user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Pessoa'
@@ -30,8 +30,8 @@ const ReservaSchema = mongoose.Schema({
   }
 });
 
-ReservaSchema.plugin(mongoosePaginate);
+LocacaoSchema.plugin(mongoosePaginate);
 
-const Reserva = mongoose.model('Reserva', ReservaSchema, 'Reserva');
+const Locacao = mongoose.model('Locacao', LocacaoSchema, 'Locacao');
 
-module.exports = Reserva;
+module.exports = Locacao;
