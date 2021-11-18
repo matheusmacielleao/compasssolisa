@@ -4,7 +4,7 @@ const updateValidation = require('../app/validation/locadora/update');
 
 const idValidation = require('../app/validation/idValidation');
 
-module.exports = (server, routes, prefix = '/api/v1/rental') => {
+module.exports = (server, routes, prefix = '/api/v1/rental/') => {
   routes.post('/', createValidation, LocadoraController.create);
   routes.get('/', LocadoraController.find);
   routes.get('/:id', idValidation, LocadoraController.findById);

@@ -7,26 +7,22 @@ const FrotaSchema = mongoose.Schema({
     ref: 'Carro',
     required: true
   },
-  status: {
-    type: String,
+  id_locadora: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Locadora',
     required: true
   },
-  id_locacao: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Locacao',
+  status: {
+    type: String,
     required: true
   },
   valor_diaria: {
     type: mongoose.Schema.Types.Decimal128,
     required: true
   },
-  id_locadora: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Locadora',
-    required: true
-  },
   placa: {
     type: String,
+    unique: true,
     required: true
   }
 });
