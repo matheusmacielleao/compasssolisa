@@ -1,7 +1,7 @@
 const request = require('supertest');
-const app = require('../src/app');
-const CarroSchema = require('../src/app/schema/CarroSchema');
-const PessoaSchema = require('../src/app/schema/PessoaSchema');
+const app = require('../../src/app');
+const CarroSchema = require('../../src/app/schema/CarroSchema');
+const PessoaSchema = require('../../src/app/schema/PessoaSchema');
 
 let BearerToken = null;
 

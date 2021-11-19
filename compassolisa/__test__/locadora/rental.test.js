@@ -1,6 +1,6 @@
 const request = require('supertest');
-const app = require('../src/app');
-const LocadoraSchema = require('../src/app/schema/LocadoraSchema');
+const app = require('../../src/app');
+const LocadoraSchema = require('../../src/app/schema/LocadoraSchema');
 
 beforeAll(async () => {
   await LocadoraSchema.deleteMany();

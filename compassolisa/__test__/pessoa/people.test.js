@@ -1,6 +1,6 @@
 const request = require('supertest');
-const app = require('../src/app');
-const PessoaSchema = require('../src/app/schema/PessoaSchema');
+const app = require('../../src/app');
+const PessoaSchema = require('../../src/app/schema/PessoaSchema');
 
 beforeAll(async () => {
   await PessoaSchema.deleteMany();
