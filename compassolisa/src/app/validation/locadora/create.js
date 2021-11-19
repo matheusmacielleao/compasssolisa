@@ -9,10 +9,9 @@ module.exports = async (req, res, next) => {
       cnpj: Joi.string().regex(regexCpnj()).required(),
       atividades: Joi.string().trim().required(),
       endereco: Joi.array()
-        .unique()
         .min(1)
         .items({
-          cep: Joi.string().regex(regexCep).trim().required(),
+          cep: Joi.string().regex(regexCep()).trim().required(),
           complemento: Joi.string().trim().optional(),
           number: Joi.number().required(),
           isFilial: Joi.boolean().required()

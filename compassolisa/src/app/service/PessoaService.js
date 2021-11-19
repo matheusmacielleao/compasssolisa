@@ -1,15 +1,14 @@
 const moment = require('moment');
-const CpfInvalido = require('../errors/CpfInvalido');
 const CpfJaCadastrado = require('../errors/CpfJaCadastrado');
 const EmailJaCadastrado = require('../errors/EmailJaCadastrado');
-const MenorDeIdade = require('../errors/MenorDeIdade');
 const PessoaNaoExiste = require('../errors/PessoaNaoExiste');
 const PessoaRepository = require('../repository/PessoaRepository');
+const regras = require('../utils/regras');
 
 class PessoaService {
   async create(payload) {
     payload.data_nascimento = moment(payload.data_nascimento, 'DD/MM/YYYY').format('YYYY-MM-DD');
-    this.check(payload);
+    regras(payload);
     const checkCpf = await PessoaRepository.find({ cpf: payload.cpf });
     if (checkCpf.docs.length > 0) {
       throw new CpfJaCadastrado();
@@ -43,7 +42,7 @@ class PessoaService {
     if (!exist) {
       throw new PessoaNaoExiste();
     }
-    this.check(payload);
+    regras(payload);
     const checkCpf = await PessoaRepository.find({ cpf: payload.cpf });
     if (checkCpf.docs.length > 0 && checkCpf.docs[0].cpf !== payload.cpf) {
       throw new CpfJaCadastrado();
@@ -54,30 +53,6 @@ class PessoaService {
     }
     const result = await PessoaRepository.update(id, payload);
     return result;
-  }
-
-  check(payload) {
-    if (Math.floor(moment(new Date()).diff(moment(payload.data_nascimento), 'years', true)) < 18) {
-      throw new MenorDeIdade();
-    }
-    const strCPF = payload.cpf.replace('.', '').replace('.', '').replace('-', '');
-    let Soma;
-    let Resto;
-    Soma = 0;
-    if (strCPF === '00000000000') throw new CpfInvalido();
-
-    for (let i = 1; i <= 9; i++) Soma += parseInt(strCPF.substring(i - 1, i), 10) * (11 - i);
-    Resto = (Soma * 10) % 11;
-
-    if (Resto === 10 || Resto === 11) Resto = 0;
-    if (Resto !== parseInt(strCPF.substring(9, 10), 10)) throw new CpfInvalido();
-
-    Soma = 0;
-    for (let i = 1; i <= 10; i++) Soma += parseInt(strCPF.substring(i - 1, i), 10) * (12 - i);
-    Resto = (Soma * 10) % 11;
-
-    if (Resto === 10 || Resto === 11) Resto = 0;
-    if (Resto !== parseInt(strCPF.substring(10, 11), 10)) throw new CpfInvalido();
   }
 }
 
