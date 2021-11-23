@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --coverage --runInBand --detectOpenHandles",
     "dev": "nodemon src/server.js",
-    "user": "node src/server.js",
+    "start": "node compassolisa/src/server.js",
     "lint": "npx eslint . --fix"
   },
   "keywords": [],
