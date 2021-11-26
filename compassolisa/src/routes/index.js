@@ -3,6 +3,7 @@ const carro = require('./carro.router');
 const pessoa = require('./pessoa.router');
 const auth = require('./auth.router');
 const locadora = require('./locadora.router');
+const frota = require('./frota.router');
 const docs = require('./docs.router');
 
 module.exports = (server) => {
@@ -12,6 +13,7 @@ module.exports = (server) => {
     pessoa(server, new Router());
     auth(server, new Router());
     locadora(server, new Router());
+    frota(server, new Router());
     next();
   });
 };
