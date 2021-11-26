@@ -17,7 +17,7 @@ const FrotaSchema = mongoose.Schema({
     required: true
   },
   valor_diaria: {
-    type: mongoose.Schema.Types.Decimal128,
+    type: Number,
     required: true
   },
   placa: {
