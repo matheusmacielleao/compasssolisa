@@ -25,7 +25,7 @@ const LocacaoSchema = mongoose.Schema({
     required: true
   },
   valor_final: {
-    type: mongoose.Schema.Types.Decimal128,
+    type: Number,
     required: true
   }
 });
