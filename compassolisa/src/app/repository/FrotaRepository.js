@@ -2,7 +2,7 @@ const PlacaRepetida = require('../errors/PlacaRepetida');
 const FrotaSchema = require('../schema/FrotaSchema');
 
 class FrotaRepository {
-  async create(payload) {
+  async create(idRental, payload) {
     const exists = await FrotaSchema.find({ placa: payload.placa });
     if (exists.length > 0) {
       throw new PlacaRepetida();
@@ -22,15 +22,15 @@ class FrotaRepository {
     );
   }
 
-  async delete(payload) {
-    return FrotaSchema.findByIdAndRemove({ _id: payload });
+  async delete(idRental, payload) {
+    return FrotaSchema.findOneAndDelete({ _id: payload, id_locadora: idRental });
   }
 
-  async findById(payload) {
-    return FrotaSchema.findById(payload);
+  async findById(idRental, payload) {
+    return FrotaSchema.findOne({ _id: payload, id_locadora: idRental });
   }
 
-  async update(_id, payload) {
+  async update(idRental, _id, payload) {
     return FrotaSchema.findOneAndUpdate({ _id }, payload, { new: true });
   }
 }

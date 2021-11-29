@@ -1,28 +1,29 @@
 const FrotaRepository = require('../repository/FrotaRepository');
 
 class FrotaService {
-  async create(payload) {
-    const result = await FrotaRepository.create(payload);
+  async create(idRental, payload) {
+    const result = await FrotaRepository.create(idRental, payload);
     return result;
   }
 
-  async find(payload) {
+  async find(idRental, payload) {
+    payload.id_locadora = idRental;
     const result = await FrotaRepository.find(payload);
     return result;
   }
 
-  async delete(payload) {
-    const result = await FrotaRepository.delete(payload);
+  async delete(idRental, payload) {
+    const result = await FrotaRepository.delete(idRental, payload);
     return result;
   }
 
-  async findById(payload) {
-    const result = await FrotaRepository.findById(payload);
+  async findById(idRental, payload) {
+    const result = await FrotaRepository.findById(idRental, payload);
     return result;
   }
 
-  async update(id, payload) {
-    const result = await FrotaRepository.update(id, payload);
+  async update(idRental, id, payload) {
+    const result = await FrotaRepository.update(idRental, id, payload);
     return result;
   }
 }
